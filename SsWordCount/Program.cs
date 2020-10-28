@@ -24,9 +24,9 @@ namespace SsWordCount
             var wordCounterService = new WordCountService();
             var wordsCount = wordCounterService.GetWordsCount(parsedText);
 
-            foreach (var (word, count) in wordsCount)
+            foreach (var wordCount in wordsCount)
             {
-                Console.WriteLine($"{word.ToUpper()} - {count}");
+                Console.WriteLine($"{wordCount.Key} - {wordCount.Value}");
             }
 
             Console.ReadKey();
