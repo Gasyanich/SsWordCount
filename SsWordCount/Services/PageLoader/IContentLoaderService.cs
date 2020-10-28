@@ -2,6 +2,6 @@
 {
     public interface IContentLoaderService
     {
-        void LoadContent(string contentPath, string filePath);
+        string LoadContentAngGetPath(string contentPath);
     }
 }

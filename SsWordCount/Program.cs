@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Net;
-using HtmlAgilityPack;
+using Microsoft.Extensions.DependencyInjection;
 using SsWordCount.Services;
 using SsWordCount.Services.PageLoader;
 using SsWordCount.Services.TextFileParser;
@@ -11,18 +10,13 @@ namespace SsWordCount
     {
         private static void Main()
         {
-            const string filePath = "E:\\projects\\c#\\ss\\testHtml.html";
-
             const string testUrl = "https://www.simbirsoft.com/";
 
-            var contentLoader = new HtmlPageLoaderService();
-            contentLoader.LoadContent(testUrl, filePath);
+            var services = ConfigureServices();
 
-            var textFileParser = new HtmlParserService();
-            var parsedText = textFileParser.Parse(filePath);
+            var wordsCountService = services.GetService<WordCountService>();
 
-            var wordCounterService = new WordCountService();
-            var wordsCount = wordCounterService.GetWordsCount(parsedText);
+            var wordsCount = wordsCountService.GetWordsCount(testUrl);
 
             foreach (var wordCount in wordsCount)
             {
@@ -30,6 +24,17 @@ namespace SsWordCount
             }
 
             Console.ReadKey();
+        }
+
+        private static IServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection()
+                .AddSingleton<IContentLoaderService, HtmlPageLoaderService>()
+                .AddSingleton<ITextFileParserService, HtmlParserService>()
+                .AddSingleton<WordCountService>()
+                .BuildServiceProvider();
+
+            return services;
         }
     }
 }
