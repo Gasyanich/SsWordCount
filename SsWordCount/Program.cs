@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using HtmlAgilityPack;
+using SsWordCount.Services;
 using SsWordCount.Services.PageLoader;
 using SsWordCount.Services.TextFileParser;
 
@@ -20,9 +21,12 @@ namespace SsWordCount
             var textFileParser = new HtmlParserService();
             var parsedText = textFileParser.Parse(filePath);
 
-            foreach (var str in parsedText)
+            var wordCounterService = new WordCountService();
+            var wordsCount = wordCounterService.GetWordsCount(parsedText);
+
+            foreach (var (word, count) in wordsCount)
             {
-                Console.WriteLine(str + " ");
+                Console.WriteLine($"{word.ToUpper()} - {count}");
             }
 
             Console.ReadKey();

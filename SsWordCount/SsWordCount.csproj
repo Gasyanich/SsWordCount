@@ -9,8 +9,4 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.26" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\WordCounter\" />
-  </ItemGroup>
-
 </Project>
