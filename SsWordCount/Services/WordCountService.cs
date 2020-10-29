@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SsWordCount.DataAccess.Entities;
 using SsWordCount.Services.PageLoader;
 using SsWordCount.Services.TextFileParser;
 
@@ -16,7 +17,7 @@ namespace SsWordCount.Services
             _parserService = parserService;
         }
 
-        public Dictionary<string, int> GetWordsCount(string url)
+        public List<WordCount> GetWordsCount(string url)
         {
             var filePath = _contentLoaderService.LoadContentAngGetPath(url);
             var parsedText = _parserService.Parse(filePath);
@@ -33,7 +34,11 @@ namespace SsWordCount.Services
                     wordsCount.Add(text, 1);
             }
 
-            return wordsCount;
+            return wordsCount.Select(kv => new WordCount
+            {
+                Word = kv.Key,
+                Count = kv.Value
+            }).ToList();
         }
     }
 }
