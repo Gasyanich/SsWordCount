@@ -24,7 +24,7 @@ namespace SsWordCount.Services.TextFileParser
 
             var parsedText = decoded.Split(_separators, StringSplitOptions.RemoveEmptyEntries)
                 //убираем из результатов строки, начинающиеся с цифр или тире
-                .Where(s => !_excludingWordChars.Contains(s.First()) && !s.StartsWith("–"))
+                .Where(s => !_excludingWordChars.Contains(s.First()))
                 .ToArray();
 
 
