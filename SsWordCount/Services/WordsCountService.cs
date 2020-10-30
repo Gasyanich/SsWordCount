@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SsWordCount.DataAccess.Entities;
 using SsWordCount.Services.PageLoader;
@@ -17,9 +18,9 @@ namespace SsWordCount.Services
             _parserService = parserService;
         }
 
-        public List<WordCount> GetWordsCountByPageUrl(string url)
+        public List<WordCount> GetWordsCountByPageUri(Uri uri)
         {
-            var filePath = _contentLoaderService.LoadContentAngGetPath(url);
+            var filePath = _contentLoaderService.LoadContentAngGetPath(uri);
             var parsedText = _parserService.Parse(filePath);
 
             var wordsCount = new Dictionary<string, int>();

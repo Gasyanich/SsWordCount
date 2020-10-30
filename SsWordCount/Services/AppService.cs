@@ -18,22 +18,35 @@ namespace SsWordCount.Services
 
         public void Run()
         {
-            var pageUrl = ConsoleHelper.ReadLine("Введите адрес web страницы");
+            var isUriValid = false;
+            Uri uri = null;
 
-            var wordsCount = _wordsCountService.GetWordsCountByPageUrl(pageUrl);
+            while (!isUriValid)
+            {
+                var pageUrl = ConsoleHelper.ReadLine("Введите адрес web страницы");
+
+                isUriValid = Uri.TryCreate(pageUrl, UriKind.Absolute, out uri)
+                             && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
+
+
+                if (!isUriValid) Console.WriteLine("Неверный формат адреса!\n");
+            }
+
+
+            var wordsCount = _wordsCountService.GetWordsCountByPageUri(uri);
 
             ConsoleHelper.PrintWordsCount(wordsCount);
 
             var page = _pageWordCountSaverService.AddWebPage(new PageWordCount
                 {
-                    Url = pageUrl,
+                    Url = uri.OriginalString,
                     WordsCount = wordsCount
                 }
             );
 
             var readPage = _pageWordCountSaverService.GetWebPage(page.Id);
 
-            ConsoleHelper.PrintWordsCount(readPage.WordsCount);
+            // ConsoleHelper.PrintWordsCount(readPage.WordsCount);
 
             _pageWordCountSaverService.DeleteWebPage(readPage);
 

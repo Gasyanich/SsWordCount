@@ -9,10 +9,8 @@ namespace SsWordCount.Services.PageLoader
         private const string PagesFolderName = "DownloadedPages";
         private const string HtmlExtension = ".html";
 
-        public string LoadContentAngGetPath(string contentPath)
+        public string LoadContentAngGetPath(Uri uri)
         {
-            var uri = new Uri(contentPath);
-
             var fileName = GetFileNameByUri(uri);
             var filePath = Path.Combine(PagesFolderName, fileName);
 
