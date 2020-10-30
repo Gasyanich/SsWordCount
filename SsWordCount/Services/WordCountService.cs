@@ -17,7 +17,7 @@ namespace SsWordCount.Services
             _parserService = parserService;
         }
 
-        public List<WordCount> GetWordsCount(string url)
+        public List<WordCount> GetWordsCountByPageUrl(string url)
         {
             var filePath = _contentLoaderService.LoadContentAngGetPath(url);
             var parsedText = _parserService.Parse(filePath);
