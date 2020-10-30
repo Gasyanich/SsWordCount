@@ -13,5 +13,15 @@ namespace SsWordCount.Helpers
                 Console.WriteLine($"{wordCount.Word} - {wordCount.Count}");
             }
         }
+
+        public static string ReadLine(string message)
+        {
+            Console.WriteLine(message + ":");
+            Console.Write(">");
+
+            var line = Console.ReadLine();
+
+            return line;
+        }
     }
 }

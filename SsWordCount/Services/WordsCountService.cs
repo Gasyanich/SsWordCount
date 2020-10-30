@@ -6,12 +6,12 @@ using SsWordCount.Services.TextFileParser;
 
 namespace SsWordCount.Services
 {
-    public class WordCountService
+    public class WordsCountService
     {
         private readonly IContentLoaderService _contentLoaderService;
         private readonly ITextFileParserService _parserService;
 
-        public WordCountService(IContentLoaderService contentLoaderService, ITextFileParserService parserService)
+        public WordsCountService(IContentLoaderService contentLoaderService, ITextFileParserService parserService)
         {
             _contentLoaderService = contentLoaderService;
             _parserService = parserService;

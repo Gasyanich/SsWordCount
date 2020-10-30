@@ -9,6 +9,6 @@ namespace SsWordCount.DataAccess.Entities
 
         [Required] public string Url { get; set; }
 
-        public ICollection<WordCount> WordCounts { get; set; }
+        public ICollection<WordCount> WordsCount { get; set; }
     }
 }

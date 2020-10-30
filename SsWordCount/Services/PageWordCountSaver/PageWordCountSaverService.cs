@@ -1,18 +1,19 @@
 ﻿using SsWordCount.DataAccess;
-using WebPageWordCount = SsWordCount.DataAccess.Entities.PageWordCount;
+using SsWordCount.DataAccess.Entities;
 
-namespace SsWordCount.Services.PageWordCount
+
+namespace SsWordCount.Services.PageWordCountSaver
 {
-    public class PageWordCountService : IPageWordCountService
+    public class PageWordCountSaverService : IPageWordCountSaverService
     {
         private readonly DataContext _dataContext;
 
-        public PageWordCountService(DataContext dataContext)
+        public PageWordCountSaverService(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
 
-        public WebPageWordCount AddWebPage(WebPageWordCount pageWordCount)
+        public PageWordCount AddWebPage(PageWordCount pageWordCount)
         {
             _dataContext.WebPages.Add(pageWordCount);
             _dataContext.SaveChanges();
@@ -20,13 +21,13 @@ namespace SsWordCount.Services.PageWordCount
             return pageWordCount;
         }
 
-        public void DeleteWebPage(WebPageWordCount pageWordCount)
+        public void DeleteWebPage(PageWordCount pageWordCount)
         {
             _dataContext.WebPages.Remove(pageWordCount);
             _dataContext.SaveChanges();
         }
 
-        public WebPageWordCount GetWebPage(int pageId)
+        public PageWordCount GetWebPage(int pageId)
         {
             return _dataContext.WebPages.Find(pageId);
         }
