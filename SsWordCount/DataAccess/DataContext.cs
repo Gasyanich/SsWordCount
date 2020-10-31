@@ -10,12 +10,12 @@ namespace SsWordCount.DataAccess
             Database.EnsureCreated();
         }
 
+        public DbSet<PageWordCount> WebPages { get; set; }
+        public DbSet<WordCount> WordCounts { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Filename=WordCount.db");
         }
-
-        public DbSet<PageWordCount> WebPages { get; set; }
-        public DbSet<WordCount> WordCounts { get; set; }
     }
 }

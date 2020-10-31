@@ -8,10 +8,8 @@ namespace SsWordCount.Helpers
     {
         public static void PrintWordsCount(IEnumerable<WordCount> wordsCount)
         {
-            foreach (var wordCount in wordsCount)
-            {
-                Console.WriteLine($"{wordCount.Word} - {wordCount.Count}");
-            }
+            Console.WriteLine("\nКоличество слов:");
+            foreach (var wordCount in wordsCount) Console.WriteLine($"{wordCount.Word} - {wordCount.Count}");
         }
 
         public static string ReadLine(string message)

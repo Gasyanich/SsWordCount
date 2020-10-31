@@ -1,5 +1,4 @@
-﻿
-namespace SsWordCount.Services.TextFileParser
+﻿namespace SsWordCount.Services.TextFileParser
 {
     public interface ITextFileParserService
     {

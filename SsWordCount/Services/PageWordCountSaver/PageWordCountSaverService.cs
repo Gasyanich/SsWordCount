@@ -1,7 +1,6 @@
 ﻿using SsWordCount.DataAccess;
 using SsWordCount.DataAccess.Entities;
 
-
 namespace SsWordCount.Services.PageWordCountSaver
 {
     public class PageWordCountSaverService : IPageWordCountSaverService

@@ -28,12 +28,10 @@ namespace SsWordCount.Services
             var upperCaseText = parsedText.Select(s => s.Trim().ToUpper());
 
             foreach (var text in upperCaseText)
-            {
                 if (wordsCount.ContainsKey(text))
                     wordsCount[text]++;
                 else
                     wordsCount.Add(text, 1);
-            }
 
             return wordsCount.Select(kv => new WordCount
             {
