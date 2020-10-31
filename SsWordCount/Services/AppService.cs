@@ -61,7 +61,8 @@ namespace SsWordCount.Services
             }
             catch (WebException e)
             {
-                Console.WriteLine("\nПроверьте подключение к Интернету и правильность введеного адреса!");
+                Console.WriteLine("\nНе удалось скачать страницу по введенному адресу\n " +
+                                  "Проверьте подключение к Интернету и правильность введеного адреса");
                 _logger.LogExceptionStackTrace(e);
                 Restart();
             }

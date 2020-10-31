@@ -14,6 +14,9 @@ namespace SsWordCount.Services.PageLoader
             var fileName = GetFileNameByUri(uri);
             var filePath = Path.Combine(PagesFolderName, fileName);
 
+            if (!Directory.Exists(PagesFolderName))
+                Directory.CreateDirectory(PagesFolderName);
+
             using var webClient = new WebClient();
             webClient.DownloadFile(uri, filePath);
 
