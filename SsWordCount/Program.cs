@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using SsWordCount.DataAccess;
 using SsWordCount.Services;
 using SsWordCount.Services.PageLoader;
@@ -26,6 +28,11 @@ namespace SsWordCount
                 .AddDbContext<DataContext>()
                 .AddSingleton<IPageWordCountSaverService, PageWordCountSaverService>()
                 .AddSingleton<AppService>()
+                .AddLogging(builder =>
+                {
+                    builder.ClearProviders();
+                    builder.AddNLog();
+                })
                 .BuildServiceProvider();
 
             return services;
