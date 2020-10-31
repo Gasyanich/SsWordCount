@@ -4,11 +4,19 @@ using System.Net;
 
 namespace SsWordCount.Services.PageLoader
 {
+    /// <summary>
+    /// Класс-сервис для загрузки html страницы и сохранения ее на жесткий диск
+    /// </summary>
     public class HtmlPageLoaderService : IContentLoaderService
     {
         private const string PagesFolderName = "DownloadedPages";
         private const string HtmlExtension = ".html";
 
+        /// <summary>
+        /// Загружает страницу по указанному uri и возвращает относительный путь до файла
+        /// </summary>
+        /// <param name="uri">Адрес для загрузки страницы</param>
+        /// <returns>Путь до загруженного файла</returns>
         public string LoadContentAngGetPath(Uri uri)
         {
             var fileName = GetFileNameByUri(uri);

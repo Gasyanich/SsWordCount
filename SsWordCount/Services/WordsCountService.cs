@@ -7,6 +7,9 @@ using SsWordCount.Services.TextFileParser;
 
 namespace SsWordCount.Services
 {
+    /// <summary>
+    /// Класс-сервис для подсчета количества слов
+    /// </summary>
     public class WordsCountService
     {
         private readonly IContentLoaderService _contentLoaderService;
@@ -18,6 +21,11 @@ namespace SsWordCount.Services
             _parserService = parserService;
         }
 
+        /// <summary>
+        /// Получение количества вхождений каждого слова по uri веб страницы
+        /// </summary>
+        /// <param name="uri">Url веб страницы</param>
+        /// <returns>Количество вхождений кажодго слова на странице</returns>
         public List<WordCount> GetWordsCountByPageUri(Uri uri)
         {
             var filePath = _contentLoaderService.LoadContentAngGetPath(uri);

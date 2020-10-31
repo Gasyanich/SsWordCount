@@ -19,6 +19,10 @@ namespace SsWordCount
             services.GetService<AppService>().Run();
         }
 
+        /// <summary>
+        /// Конфигурация DI контейнера
+        /// </summary>
+        /// <returns>Сконфигурированный DI-контейнер</returns>
         private static IServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection()

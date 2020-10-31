@@ -8,6 +8,9 @@ using SsWordCount.Services.PageWordCountSaver;
 
 namespace SsWordCount.Services
 {
+    /// <summary>
+    /// Класс, содержащий главную логику приложения
+    /// </summary>
     public class AppService
     {
         private readonly ILogger<AppService> _logger;
@@ -23,6 +26,10 @@ namespace SsWordCount.Services
             _logger = logger;
         }
 
+
+        /// <summary>
+        /// Запуск приложения
+        /// </summary>
         public void Run()
         {
             try
